@@ -1,3 +1,10 @@
+// function to generate a random numeric value
+var randomNumber = function (min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return value;
+};
+
 var fight = function(enemy) {
     // repeat and execute as long as the enemy-robot is alive
     while(playerInfo.health > 0 && enemy.health > 0) {
@@ -87,7 +94,7 @@ var startGame = function () {
             fight(pickedEnemyObj);
 
             // if player is still alive and we're not at the last enemy in the arry
-            if (playerInfo.health > 0 && i < enemy.name.length - 1) {
+            if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
                 // ask if player wants to use the store before next round
                 var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
 
@@ -161,13 +168,6 @@ var shop = function() {
     }
 };
 
-// function to generate a random numeric value
-var randomNumber = function (min, max) {
-    var value = Math.floor(Math.random() * (max - min + 1) + min);
-
-    return value;
-};
-
 var playerInfo = {
     name: window.prompt("What is your robot's name?"),
     health: 100,
@@ -200,23 +200,25 @@ var playerInfo = {
     }
 };
 
-// You can also log multiple values at once like this
-console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
-
 var enemyInfo = [
     {
-    name: "Roborto",
-    attack: randomNumber(10, 14)
+        name: "Roborto",
+        attack: randomNumber(10, 14)
     },
     {
-    name: "Amy Android",
-    attack: randomNumber(10, 14)
+        name: "Amy Android",
+        attack: randomNumber(10, 14)
     }, 
     {
-    name: "Robo Trumble",
-    attack: randomNumber(10, 14)
+        name: "Robo Trumble",
+        attack: randomNumber(10, 14)
     }
 ];
+
+console.log(enemyInfo);
+console.log(enemyInfo[0]);
+console.log(enemyInfo[0].name);
+console.log(enemyInfo[0]['attack']);
 
 // start the game when the page loads
 startGame();
